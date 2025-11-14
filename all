@@ -1,0 +1,113 @@
+ 
+import 'package:flutter/material.dart'; 
+ 
+void main() => runApp(MaterialApp(home: RotateExample())); 
+ 
+class RotateExample extends StatefulWidget { 
+  @override 
+  _RotateExampleState createState() => _RotateExampleState(); 
+} 
+ 
+class _RotateExampleState extends State<RotateExample> 
+    with SingleTickerProviderStateMixin { 
+  late final control = 
+      AnimationController(vsync: this, duration: Duration(seconds: 
+3))..repeat(); 
+ 
+  @override 
+  Widget build(BuildContext context) => Scaffold( 
+        appBar: AppBar(title: Text('Rotate Animation')), 
+        body: Center( 
+          child: RotationTransition( 
+            turns: control, 
+            child: Container( 
+              height: 100, 
+              width: 100, 
+              color: Colors.orange, 
+              alignment: Alignment.center, 
+            ), 
+          ), 
+        ), 
+      ); 
+ 
+  @override 
+  void dispose() { 
+    control.dispose(); 
+    super.dispose(); 
+  } 
+}
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+import 'package:flutter/material.dart'; 
+ 
+void main() => runApp(MyApp()); 
+ 
+class MyApp extends StatelessWidget { 
+  @override 
+  Widget build(BuildContext context) { 
+    return MaterialApp(home: FirstPage()); 
+  } 
+} 
+ 
+class FirstPage extends StatelessWidget { 
+  @override 
+  Widget build(BuildContext context) { 
+    return Scaffold( 
+      appBar: AppBar(title: Text('First Page')), 
+      body: Center( 
+        child: ElevatedButton( 
+          child: Text('Go to Second Page'), 
+          onPressed: () { 
+            Navigator.push( 
+              context, 
+              MaterialPageRoute(builder: (context) => SecondPage()), 
+            ); 
+          }, 
+        ), 
+      ), 
+    ); 
+  } 
+} 
+ 
+class SecondPage extends StatelessWidget { 
+  @override 
+  Widget build(BuildContext context) { 
+    return Scaffold( 
+      appBar: AppBar(title: Text('Second Page')), 
+      body: Center( 
+ 
+ 
+        child: ElevatedButton( 
+          child: Text('Go Back'), 
+          onPressed: () => Navigator.pop(context), 
+        ), 
+      ), 
+    ); 
+  } 
+}
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+import 'package:flutter/material.dart'; 
+ 
+void main() => runApp(MaterialApp( 
+  home: Scaffold( 
+    appBar: AppBar(title: Text('Container Example')), 
+    body: Center( 
+      child: Container( 
+        height: 150, 
+        width: 150, 
+        decoration: BoxDecoration( 
+          color: Colors.orange, 
+          borderRadius: BorderRadius.circular(20), 
+          boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 8)], 
+        ), 
+        alignment: Alignment.center, 
+        child: Text( 
+          'Hello Flutter', 
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold), 
+        ), 
+      ), 
+    ), 
+  ), 
+)); 
+ 
