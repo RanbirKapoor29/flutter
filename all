@@ -1,41 +1,47 @@
- 
-import 'package:flutter/material.dart'; 
- 
-void main() => runApp(MaterialApp(home: RotateExample())); 
- 
-class RotateExample extends StatefulWidget { 
-  @override 
-  _RotateExampleState createState() => _RotateExampleState(); 
-} 
- 
-class _RotateExampleState extends State<RotateExample> 
-    with SingleTickerProviderStateMixin { 
-  late final control = 
-      AnimationController(vsync: this, duration: Duration(seconds: 
-3))..repeat(); 
- 
-  @override 
-  Widget build(BuildContext context) => Scaffold( 
-        appBar: AppBar(title: Text('Rotate Animation')), 
-        body: Center( 
-          child: RotationTransition( 
-            turns: control, 
-            child: Container( 
-              height: 100, 
-              width: 100, 
-              color: Colors.orange, 
-              alignment: Alignment.center, 
-            ), 
-          ), 
-        ), 
-      ); 
- 
-  @override 
-  void dispose() { 
-    control.dispose(); 
-    super.dispose(); 
-  } 
+import 'package:flutter/material.dart';
+
+void main() => runApp(const MaterialApp(home: RotateExample()));
+
+class RotateExample extends StatefulWidget {
+  const RotateExample({super.key});
+
+  @override
+  State<RotateExample> createState() => _RotateExampleState();
 }
+
+class _RotateExampleState extends State<RotateExample>
+    with SingleTickerProviderStateMixin {
+
+  late final control = AnimationController(
+    vsync: this,
+    duration: const Duration(seconds: 3),
+  )..repeat();
+
+  @override
+  void dispose() {
+    control.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Rotate Animation')),
+      body: Center(
+        child: RotationTransition(
+          turns: control,
+          child: Container(
+            height: 100,
+            width: 100,
+            color: Colors.orange,
+            alignment: Alignment.center,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 import 'package:flutter/material.dart'; 
